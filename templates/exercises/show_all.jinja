@@ -17,6 +17,10 @@
     {% for exercise in exercises %}
         {{ exercise.name }}: {{exercise.sets}} sets {{exercise.reps}} reps
         <a href="/exercise/{{exercise.id}}/edit">Edit</a>
+        <form action="/exercise/{{exercise.id}}/delete" method="post">
+            <label for="delete"></label>
+            <input type="submit" name="delete" id="delete" value="Delete">
+        </form>
         <br>
     {% endfor %}
 
