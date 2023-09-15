@@ -10,10 +10,10 @@ def all_workouts():
     workouts = Workout.query.all()
     return render_template("index.jinja", workouts=workouts)
 
-@workout_blueprint.route("/workout/<id>")
-def show_workout(id):
-    workout = Workout.query.get(id)
-    return render_template("workouts/show_workout.jinja", workout=workout)
+# @workout_blueprint.route("/workout/<id>")
+# def show_workout(id):
+#     workout = Workout.query.get(id)
+#     return render_template("workouts/show_workout.jinja", workout=workout)
 
 
 

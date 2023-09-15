@@ -1,20 +1,22 @@
 {% extends 'base.jinja' %} {% block content %}
 
-<h1>Workout</h1>
-<p>This is the homepage</p>
+    <h1>Workout</h1>
+    <p>This is the homepage</p>
 
-<p>Choose your workout</p>
-<div>
-    <select name="workout" id="workout">
-        {% for workout in workouts %}
-            <option value="workout.id">{{workout.name}}</option>
-        {% endfor %}
-    </select>
-    
-</div>
-<form action="/workout/{{workout.id}}" method="post">
-    <input type="submit" value="Start workout">
-</form>
+    <p>Choose your workout</p>
+    <div>
+        <select name="workout" id="workout">
+            {% for workout in workouts %}
+                <option value="workout.id">{{workout.name}}</option>
+            {% endfor %}
+        </select>
+        <form action="">
+        <input type="submit" value="Start Workout">
+        </form>
+    </div>
+    {# <form action="/workout/{{workout.id}}" method="post">
+        <input type="submit" value="Start workout">
+    </form> #}
 
 {% endblock content %}
 
