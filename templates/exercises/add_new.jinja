@@ -1,6 +1,6 @@
 {% extends 'base.jinja' %} {% block content %}
     
-    <form action="/exercises/all" method="post">
+    <form action="/exercise/new" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
 
@@ -17,6 +17,7 @@
     {% for exercise in exercises %}
         {{ exercise.name }} {{exercise.sets}} {{exercise.reps}}
     {% endfor %}
+    
 {% endblock content %}
 
 {# {{workouts}} #}
