@@ -15,9 +15,11 @@
 
     <h2>All exercises</h2>
     {% for exercise in exercises %}
-        {{ exercise.name }} {{exercise.sets}} {{exercise.reps}}
+        {{ exercise.name }}: {{exercise.sets}} sets {{exercise.reps}} reps
+        <a href="/exercise/{{exercise.id}}">Edit</a>
+        <br>
     {% endfor %}
-    
+
 {% endblock content %}
 
 {# {{workouts}} #}

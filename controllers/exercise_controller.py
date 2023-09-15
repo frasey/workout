@@ -12,14 +12,7 @@ def show_all():
     workouts = Workout.query.all()
     return render_template("exercises/add_new.jinja", exercises=exercises, workouts=workouts)
 
-# edit exercises
-
-# update exercsies
-
-# delete exercise
-
 # add exercise
-
 @exercise_blueprint.route("/exercise/new", methods=['POST'])
 def add_new_exercise():
     name = request.form["name"]
@@ -30,3 +23,14 @@ def add_new_exercise():
     db.session.add(new_exercise)
     db.session.commit()
     return redirect("/exercise")
+
+# edit exercises
+@exercise_blueprint.route("/exercise/<id>")
+def edit(id):
+    exercise = Exercise.query.get(id)
+    return render_template('exercises/edit.jinja', exercise=exercise)
+
+
+
+# delete exercise
+
