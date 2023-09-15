@@ -1,4 +1,15 @@
 from app import db
+# from sqlalchemy.orm import DeclarativeBase, relationship
+
+# class Base(DeclarativeBase):
+#     pass
+
+# workout_exercise = Table(
+#     "workout_exercise"
+#     Base.metadata
+#     Column("workout_id", ForeignKey("workouts.id"), primary_key=True)
+#     Column("exercise_id", ForeignKey("exercises.id"), primary_key=True)
+# )
 
 class Workout_exercise(db.Model):
     __tablename__ = "workout_exercise"

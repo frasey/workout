@@ -1,0 +1,14 @@
+{% extends 'base.jinja' %} {% block content %}
+
+{{workouts}}
+    
+   {% for exercise in exercises %}
+    {{exercise.name}}  {{exercise.workouts}}
+   {% endfor %}
+
+    {% for workout in workouts %}
+        {{workout.name}}{{workout.exercises}}
+    {% endfor %}
+
+
+{% endblock content %}
