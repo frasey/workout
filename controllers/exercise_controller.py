@@ -21,4 +21,4 @@ exercise_blueprint = Blueprint("/exercise", __name__)
 def show_all():
     exercises = Exercise.query.all()
     workouts = Workout.query.all()
-    return render_template("index.jinja", exercises=exercises, workouts=workouts)
+    return render_template("exercises/add_new.jinja", exercises=exercises, workouts=workouts)

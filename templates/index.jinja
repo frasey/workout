@@ -1,14 +1,15 @@
 {% extends 'base.jinja' %} {% block content %}
 
-{{workouts}}
-    
-   {% for exercise in exercises %}
-    {{exercise.name}}  {{exercise.workouts}}
-   {% endfor %}
+<h1>Workout</h1>
+<p>This is the homepage</p>
 
+<p>Choose your workout</p>
+<select name="workout" id="workout">
     {% for workout in workouts %}
-        {{workout.name}}{{workout.exercises}}
+        <option value="workout.id">{{workout.name}}</option>
     {% endfor %}
+</select>
 
 
 {% endblock content %}
+
