@@ -3,13 +3,16 @@
     <form action="/exercises/all" method=""post>
         {{workouts}}
     
-    {% for exercise in exercises %}
+    
+    </form>
+
+{% endblock content %}
+
+
+{# {% for exercise in exercises %}
         {{exercise.name}}  {{exercise.workouts}}
     {% endfor %}
 
     {% for workout in workouts %}
         {{workout.name}}{{workout.exercises}}
-    {% endfor %}
-    </form>
-
-{% endblock content %}
+    {% endfor %} #}

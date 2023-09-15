@@ -4,12 +4,17 @@
 <p>This is the homepage</p>
 
 <p>Choose your workout</p>
-<select name="workout" id="workout">
-    {% for workout in workouts %}
-        <option value="workout.id">{{workout.name}}</option>
-    {% endfor %}
-</select>
-
+<div>
+    <select name="workout" id="workout">
+        {% for workout in workouts %}
+            <option value="workout.id">{{workout.name}}</option>
+        {% endfor %}
+    </select>
+    
+</div>
+<form action="/workout/{{workout.id}}" method="post">
+    <input type="submit" value="Start workout">
+</form>
 
 {% endblock content %}
 
