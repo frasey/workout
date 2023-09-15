@@ -15,3 +15,4 @@ from controllers.workout_exercise_controller import workout_exercise_blueprint
 
 app.register_blueprint(exercise_blueprint)
 app.register_blueprint(workout_blueprint)
+app.register_blueprint(workout_exercise_blueprint)
