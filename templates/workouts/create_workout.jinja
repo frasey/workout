@@ -1,17 +1,14 @@
 {% extends 'base.jinja' %} {% block content %}
     
-<div>
-    <ul>
-    {% for exercise in exercises %}
-        <li>{{exercise.name}}: {{exercise.sets}} sets {{exercise.reps}} reps
-                <input name="add-exercise" type="submit" value="Add to workout"></li>
-                {# checkbox instead of button? #}
-    {% endfor %}
-    </ul>
-</div>
-
-    </form>
-
+    <div>
+        <ul>
+        {% for exercise in exercises %}
+            <li>{{exercise.name}}: {{exercise.sets}} sets {{exercise.reps}} reps
+                    <input name="add-exercise" type="submit" value="Add to workout"></li>
+        {% endfor %}
+        </ul>
+    </div>
+    
     <h2>Didn't see it?</h2>
 
     <form action="/exercise/new" method="post">

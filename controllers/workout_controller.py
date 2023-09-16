@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, request
 from app import db
 from models.workout import Workout
 from models.exercise import Exercise
-from sqlalchemy import desc
+from models.workout_exercise import Workout_exercise
 
 workout_blueprint = Blueprint("/workout", __name__)
 
@@ -43,7 +43,19 @@ def add_workout():
 @workout_blueprint.route("/workout/<id>/add-exercises")
 def add_exercises_to_workout(id):
     workout = Workout.query.get(id)
-    return "working"
+    exercises_to_choose = Exercise.query.all()
+    return render_template("workouts/add_exercises.jinja", exercises=exercises_to_choose, workout=workout)
+
+# update db with new workout_exercise
+@workout_blueprint.route("/workout/<id>/add-exercises", methods=["POST"])
+def add_workout_to_db(id):    
+    workout_id = Workout.query.get(id)
+    selected_exercise = "selected" in request.form
+    new_workout = Workout_exercise(exercise_id=selected_exercise, workout_id=workout_id)
+
+    db.session.add(new_workout)
+    return "done"
+
 # edit workout
 
 # delete workout
