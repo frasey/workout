@@ -1,18 +1,18 @@
 {% extends 'base.jinja' %} {% block content %}
     
-    <h2>Edit exercise</h2>
+    <h2 class="edit-title">Edit exercise</h2>
 
-    <form action="/exercise/{{ exercise.id }}/edit" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="{{ exercise.name }}">
+    <form class="form edit-form" action="/exercise/{{ exercise.id }}/edit" method="post">
+        <label class="form" for="name">Name</label>
+        <input class="dropdown" type="text" name="name" id="name" value="{{ exercise.name }}">
 
-        <label for="sets">Sets</label>
-        <input type="number" name="sets" id="sets" value="{{ exercise.sets }}">
+        <label class="form" for="sets">Sets</label>
+        <input class="dropdown" type="number" name="sets" id="sets" value="{{ exercise.sets }}">
 
-        <label for="reps">Reps</label>
-        <input type="number" name="reps" id="reps" value="{{ exercise.reps }}">
+        <label class="form" for="reps">Reps</label>
+        <input class="dropdown" type="number" name="reps" id="reps" value="{{ exercise.reps }}">
     
-        <input type="submit" value="Update exercise">
+        <input class="submit-input" type="submit" value="Update exercise">
     </form>
 
 {% endblock content %}

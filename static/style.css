@@ -9,12 +9,12 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
-    text-align: center;
 }
 
 /* BASE */
 .base-header {
     margin: 15px 0;
+    padding: 0 2rem;
     display: flex;
     gap: 40%;
 }
@@ -53,7 +53,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Press Start 2P', cursive;
-    font-size: 80px;
+    font-size: 100px;
     color: #fff;
     text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
     background-color: transparent;
@@ -65,21 +65,79 @@
     width: 100%;
 }
 
-/* HOMEPAGE DROPDOWN */
+/* HOMEPAGE */
+
+.homepage__choose-workout {
+    text-align: center;
+}
 
 .homepage__choose-title {
     margin: 15px 0;
+    text-align: center;
 }
+
+/* DROPDOWNS, BUTTONS, LINKS */
 
 .dropdown {
     background-color: #FFE1CC;
     border-color: #695D54;
+    border-radius: 5px;
 }
 
 .submit-input {
     margin: 15px 0;
     padding: 5px;
-    background-color: #FFE1CC;
+    background-color: #FFD4B8;
+    border-style: solid;
     border-color: #695D54;
     border-radius: 5px;
+}
+
+.delete {
+    margin: 15px 0;
+    padding: 5px;
+    background-color: #C9598A;
+    border-color: #695D54;
+    border-radius: 5px;
+}
+
+.button {
+    color: #000;
+    background-color: #BF88BA;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #695D54;
+    border-width: 5px;
+}
+
+.center-form {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    text-align: center;
+    background-color: #FDB249;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+/* SHOW/ADD EXERCISES */
+.exercises__title {
+    text-decoration: underline;
+    margin: 10px 0 20px;
+}
+
+.exercises-list {
+    font-style: bold;
+}
+
+.edit-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.edit-form {
+    width: max-content;
+    text-align: center;
 }
