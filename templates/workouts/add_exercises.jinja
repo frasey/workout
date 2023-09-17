@@ -1,22 +1,23 @@
 {% extends 'base.jinja' %} {% block content %}
     
+<section class="container">
+    <h2 class="page-title">{{workout.name}}</h2>
 
-<h2>{{workout.name}}</h2>
 
-
-    <ul>
-        {% for exercise in exercises %}
-            <li>Name:{{exercise.name}}  Sets:{{exercise.sets}}  Reps:{{exercise.reps}}
-                <form action="">
-                    <label for="selected"></label>
-                    <input type="checkbox" id="selected" name="selected">
-                </form>
-            </li>
-        {% endfor %}
-        <form action="/workout/{workout.id}/add-exercises" method="post">
-            <input type="submit" value="Add workout">
-        </form>
-    </ul>
-{# {{workouts.exercise}} #}
+        <ul>
+            {% for exercise in exercises %}
+                <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
+                    <form action="">
+                        <label for="selected"></label>
+                        <input type="checkbox" id="selected" name="selected">
+                    </form>
+                </li>
+            {% endfor %}
+            <form action="/workout/{workout.id}/add-exercises" method="post">
+                <input class="submit-input" type="submit" value="Add workout">
+            </form>
+        </ul>
+    {# {{workouts.exercise}} #}
+</section>
 
 {% endblock content %}

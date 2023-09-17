@@ -1,15 +1,15 @@
 {% extends 'base.jinja' %} {% block content %}
     
-    <h2>Create a workout</h2>
+    <h2 class="page-title">Create a workout</h2>
 
-    <form action="/workout/new" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
+    <form class="form" action="/workout/new" method="post">
+        <label class="form" for="name">Name</label>
+        <input class="dropdown" type="text" name="name" id="name">
     
-        <label for="type">Type</label>
-        <input type="text" name="type" id="type">
+        <label class="form" for="type">Type</label>
+        <input class="dropdown" type="text" name="type" id="type">
 
-        <input type="submit" value="Create workout">
+        <input class="submit-input" type="submit" value="Create workout">
 
     </form>
 

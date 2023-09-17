@@ -122,6 +122,11 @@
     padding: 0 10px;
 }
 
+.page-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 /* SHOW/ADD EXERCISES */
 .exercises__title {
     text-decoration: underline;
@@ -130,11 +135,6 @@
 
 .exercises-list {
     font-style: bold;
-}
-
-.edit-title {
-    text-align: center;
-    margin-bottom: 10px;
 }
 
 .edit-form {
