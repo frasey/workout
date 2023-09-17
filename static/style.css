@@ -8,11 +8,10 @@
 .base-header {
     margin: 15px 0;
     display: flex;
+    gap: 40%;
 }
 
 .header-title {
-    text-align: center;
-    text-align: center;
     font-family: 'Press Start 2P', cursive;
     color: #fff;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
