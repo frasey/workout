@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #FD9149;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.base-header {
+    margin: 15px 0;
+    display: flex;
+}
+
+.header-title {
+    text-align: center;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.hero-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 60vw;
+}
+
+.hero-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 80px;
+    color: #fff;
+    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+    background-color: transparent;
+    
+}
+
+.hero__image {
+    height: 60vw;
+    width: 100%;
+}
