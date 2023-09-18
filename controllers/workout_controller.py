@@ -12,6 +12,12 @@ def all_workouts():
     workouts = Workout.query.all()
     return render_template("index.jinja", workouts=workouts)
 
+@workout_blueprint.route("/workout", methods=["POST"])
+def show_homepage_workout():
+
+    workouts = Workout.query.all()
+    return render_template("index.jinja", workouts=workouts)
+
 # show one workout
 @workout_blueprint.route("/workout/<id>")
 def show_workout(id):
@@ -60,6 +66,12 @@ def add_workout_to_db(id):
 
     workout_id = id
     return redirect(f"/workout/{workout_id}")
+
+# show all workouts
+@workout_blueprint.route("/workout/all-workouts")
+def show_all_workouts():
+    workouts = Workout.query.all()
+    return render_template('workouts/all-workouts.jinja', workouts=workouts)
 
 # edit workout
 @workout_blueprint.route("/workout/<id>/edit")

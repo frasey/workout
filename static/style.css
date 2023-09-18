@@ -76,6 +76,11 @@
     text-align: center;
 }
 
+.homepage-dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
 /* DROPDOWNS, BUTTONS, LINKS */
 
 .dropdown {

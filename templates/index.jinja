@@ -1,4 +1,5 @@
 {% extends 'base.jinja' %} {% block content %}
+
     <div class="hero-container">
         <img class = hero__image src="static/gym.jpg" alt="gym">
         <h1 class="hero-title">Workout</h1>
@@ -7,19 +8,16 @@
     <section class="container homepage__choose-workout">
         <h2 class="homepage__choose-title">Choose your workout</h2>
         <div>
-            <select class="dropdown" name="workout" id="workout">
-                {% for workout in workouts %}
-                    <option value="workout.id">{{workout.name}}</option>
-                {% endfor %}
-            </select>
-            <form action="">
-            <input class="submit-input" type="submit" value="Start Workout">
+            <form class="homepage-dropdown" action="/workout" method="post"></form>
+                <select class="dropdown" name="workout" id="workout">
+                    {% for workout in workouts %}
+                        <option value="workout.id">{{workout.name}}</option>
+                    {% endfor %}
+                </select>
+                <input class="submit-input" type="submit" value="Start Workout">
             </form>
         </div>
     </section>
-    {# <form action="/workout/{{workout.id}}" method="post">
-        <input type="submit" value="Start workout">
-    </form> #}
 
 {% endblock content %}
 

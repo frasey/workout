@@ -4,19 +4,36 @@
     <h2 class="page-title">{{workout.name}}</h2>
 
 
-        <ul>
-            <form action="/workout/{{workout.id}}/add-exercises" method="post">
-            {% for exercise in exercises %}
-                <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
-                        <label for="selected"></label>
-                        <input type="checkbox" id="selected" name="selected" value={{exercise.id}}>
-                </li>
-            {% endfor %}
-            
-                <input class="submit-input" type="submit" value="Create workout">
-            </form>
-        </ul>
-    {# {{workouts.exercise}} #}
+    <ul>
+        <form action="/workout/{{workout.id}}/add-exercises" method="post">
+        {% for exercise in exercises %}
+            <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
+                    <label for="selected"></label>
+                    <input type="checkbox" id="selected" name="selected" value={{exercise.id}}>
+            </li>
+        {% endfor %}
+        
+            <input class="submit-input" type="submit" value="Create workout">
+        </form>
+    </ul>
+
+    <h3>Didn't see it?</h3>
+
+    <form class="form" action="/exercise/new" method="post">
+        <label class="form" for="name">Name</label>
+        <input class="dropdown" type="text" name="name" id="name">
+
+        <label class="form" for="sets">Sets</label>
+        <input class="dropdown" type="number" name="sets" id="sets">
+
+        <label class="form" for="reps">Reps</label>
+        <input class="dropdown" type="number" name="reps" id="reps">
+    
+        <input class="submit-input" type="submit" value="Add Exercise">
+    </form>
+    
 </section>
 
 {% endblock content %}
+
+{# {{workouts.exercise}} #}

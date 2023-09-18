@@ -1,0 +1,14 @@
+{% extends 'base.jinja' %} {% block content %}
+    
+    <h2>All workouts</h2>
+
+    {# {{workouts}} #}
+
+    {% for workout in workouts %}
+        <h3>{{ workout.name}}</h3>
+        <p>{{ workout.exercises }}</p>
+        <a href="/{{workout.id}}/edit">Edit</a>
+        <input type="submit" value="Delete">
+    {% endfor %}
+
+{% endblock content %}
