@@ -17,8 +17,6 @@ def all_workouts():
 #     workout = Workout.query.get(id)
 #     return render_template("workouts/show_workout.jinja", workout=workout)
 
-
-
 # create workout
 @workout_blueprint.route("/workout/new")
 def new_workout():
@@ -31,10 +29,12 @@ def add_workout():
     name = request.form["name"]
     type = request.form["type"]
     new_workout = Workout(name=name, type=type)
-
-    db.session.add(new_workout)
-    db.session.commit()
-
+    workout = Workout.query.all()
+    for workout in workout:
+        if new_workout != workout.name:
+            db.session.add(new_workout)
+            db.session.commit()
+    
     workouts = Workout.query.all()
     workout_id = len(workouts)
     return redirect(f"/workout/{workout_id}/add-exercises")
@@ -57,6 +57,18 @@ def add_workout_to_db(id):
     return "done"
 
 # edit workout
+@workout_blueprint.route("/workout/<id>/edit")
+def edit_workout(id):
+    workout = Workout.query.get(id)
+    return render_template('workouts/edit.jinja', workout=workout)
+
+# update workout
+
 
 # delete workout
-
+@workout_blueprint.route("/workout/<id>/delete", methods=['POST'])
+def delete_workout(id):
+    workout = Workout.query.get(id)
+    db.session.delete(workout)
+    db.session.commit()
+    return "deleted"

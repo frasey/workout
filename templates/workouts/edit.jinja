@@ -1,0 +1,16 @@
+{% extends 'base.jinja' %}  {% block content %}
+    
+    <h2 class="page-title">Edit workout</h2>
+
+    <form class="form edit-form" action="/workout/{ workout.id}/edit" method="post">
+        <label class="form" for="name">Name</label>
+        <input class="dropdown" type="text" name="name" id="name" value="{workout.name}">
+    
+        <label class="form" for="type">Type</label>
+        <input class="dropdown" type="text" name="type" id="type" value="{workout.type}">
+
+        <input class="submit-input" type="submit" value="Edit workout">
+
+    </form>
+
+{% endblock content %}

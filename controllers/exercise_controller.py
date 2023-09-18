@@ -7,7 +7,7 @@ exercise_blueprint = Blueprint("/exercise", __name__)
 
 # show all exercises
 @exercise_blueprint.route("/exercise")
-def show_all():
+def show_all_exercises():
     exercises = Exercise.query.all()
     workouts = Workout.query.all()
     return render_template("exercises/show_all.jinja", exercises=exercises, workouts=workouts)
@@ -26,7 +26,7 @@ def add_new_exercise():
 
 # edit exercises
 @exercise_blueprint.route("/exercise/<id>/edit")
-def edit(id):
+def edit_exercise(id):
     exercise = Exercise.query.get(id)
     return render_template('exercises/edit.jinja', exercise=exercise)
 
