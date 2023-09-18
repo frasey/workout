@@ -5,16 +5,15 @@
 
 
         <ul>
+            <form action="/workout/{{workout.id}}/add-exercises" method="post">
             {% for exercise in exercises %}
                 <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
-                    <form action="">
                         <label for="selected"></label>
-                        <input type="checkbox" id="selected" name="selected">
-                    </form>
+                        <input type="checkbox" id="selected" name="selected" value={{exercise.id}}>
                 </li>
             {% endfor %}
-            <form action="/workout/{workout.id}/add-exercises" method="post">
-                <input class="submit-input" type="submit" value="Add workout">
+            
+                <input class="submit-input" type="submit" value="Create workout">
             </form>
         </ul>
     {# {{workouts.exercise}} #}

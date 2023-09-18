@@ -12,10 +12,11 @@ def all_workouts():
     workouts = Workout.query.all()
     return render_template("index.jinja", workouts=workouts)
 
-# @workout_blueprint.route("/workout/<id>")
-# def show_workout(id):
-#     workout = Workout.query.get(id)
-#     return render_template("workouts/show_workout.jinja", workout=workout)
+# show one workout
+@workout_blueprint.route("/workout/<id>")
+def show_workout(id):
+    workout = Workout.query.get(id)
+    return render_template("workouts/show_workout.jinja", workout=workout)
 
 # create workout
 @workout_blueprint.route("/workout/new")
@@ -29,11 +30,8 @@ def add_workout():
     name = request.form["name"]
     type = request.form["type"]
     new_workout = Workout(name=name, type=type)
-    workout = Workout.query.all()
-    for workout in workout:
-        if new_workout != workout.name:
-            db.session.add(new_workout)
-            db.session.commit()
+    db.session.add(new_workout)
+    db.session.commit()
     
     workouts = Workout.query.all()
     workout_id = len(workouts)
@@ -47,14 +45,21 @@ def add_exercises_to_workout(id):
     return render_template("workouts/add_exercises.jinja", exercises=exercises_to_choose, workout=workout)
 
 # update db with new workout_exercise
-@workout_blueprint.route("/workout/<id>/add-exercises", methods=["POST"])
+@workout_blueprint.route("/workout/<int:id>/add-exercises", methods=["POST"])
 def add_workout_to_db(id):    
-    workout_id = Workout.query.get(id)
-    selected_exercise = "selected" in request.form
-    new_workout = Workout_exercise(exercise_id=selected_exercise, workout_id=workout_id)
 
-    db.session.add(new_workout)
-    return "done"
+    is_key_present= "selected" in request.form
+    if is_key_present:
+        exercise_ids = request.form.getlist("selected")
+
+    for value in exercise_ids:
+        exercise_id=int(value)
+        new_workout_exercise = Workout_exercise(exercise_id=exercise_id, workout_id=id)
+        db.session.add(new_workout_exercise)
+        db.session.commit()
+
+    workout_id = id
+    return redirect(f"/workout/{workout_id}")
 
 # edit workout
 @workout_blueprint.route("/workout/<id>/edit")
