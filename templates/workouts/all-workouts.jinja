@@ -8,7 +8,7 @@
     {% for workout in workouts %}
     <div class="workout-list"></div>
         <h3>{{ workout.name}}</h3>
-        <p>{{ workout.exercises }}</p>
+        <p>{{ workout.exercises }}
         <a href="/workout/{{workout.id}}/edit">Edit</a>
         <form action="/workout/{{ workout.id }}/delete" method="post">
             <input class="delete" type="submit" value="Delete">

@@ -14,10 +14,27 @@
                         <option value="workout.id">{{workout.name}}</option>
                     {% endfor %}
                 </select>
+                
+                <div>
+                {# {% if workout_id %}
+                    <ul>
+                        {% for workout in workouts %}
+                            {% if workout %}
+                                <li>{{workout.exercises}}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %} #}
                 <input class="submit-input" type="submit" value="Start Workout">
+                </div>
+            
             </form>
         </div>
     </section>
+
+    <div>
+        
+    </div>
 
 {% endblock content %}
 

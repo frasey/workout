@@ -4,5 +4,8 @@
     <br>
     {{ workout.exercises }}
 
-    <p>add functionality here to show workout completed</p>
+    <form action="/workout/{{workout.id}}/workout-completed" method="post">
+        <label for="workout-completed"></label>
+        <input type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
+    </form>
 {% endblock content %}

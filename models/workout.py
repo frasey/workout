@@ -11,5 +11,5 @@ class Workout(db.Model):
     # primary is model to access, secondary is what you're accessing it through
 
     def __repr__(self):
-        return f"Workout: {self.id}: {self.name}"
+        return f"Workout: {self.id}: {self.name}, completed: {self.completed}"
     

@@ -10,5 +10,5 @@ class Exercise(db.Model):
     # using secondary in Workout so don't need to declare relationship twice
 
     def __repr__(self):
-        return f"Exercise: {self.id}: {self.name}"
+        return f"Exercise: {self.name} Sets: {self.sets} Reps: {self.reps}"
     

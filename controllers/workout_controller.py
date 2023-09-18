@@ -3,6 +3,7 @@ from app import db
 from models.workout import Workout
 from models.exercise import Exercise
 from models.workout_exercise import Workout_exercise
+from models.user import User
 
 workout_blueprint = Blueprint("/workout", __name__)
 
@@ -10,7 +11,13 @@ workout_blueprint = Blueprint("/workout", __name__)
 @workout_blueprint.route("/workout")
 def all_workouts():
     workouts = Workout.query.all()
-    return render_template("index.jinja", workouts=workouts)
+    args = request.args
+    workout_id = args.get("workout")
+    if workout_id:
+        exercises = Workout_exercise.filter_by(workout_id)
+        return render_template("index.jinja", workouts=workouts, exercises=exercises)
+    else:
+        return render_template("index.jinja", workouts=workouts)
 
 @workout_blueprint.route("/workout", methods=["POST"])
 def show_homepage_workout():
@@ -77,10 +84,25 @@ def show_all_workouts():
 @workout_blueprint.route("/workout/<id>/edit")
 def edit_workout(id):
     workout = Workout.query.get(id)
-    return render_template('workouts/edit.jinja', workout=workout)
+    exercises = Exercise.query.all()
+    return render_template('workouts/edit.jinja', workout=workout, exercises=exercises)
 
-# update workout
+# update workout including exercises
+@workout_blueprint.route("/workout/<int:id>/edit", methods=["POST"])
+def update_workout_in_db(id):    
 
+    is_key_present= "selected" in request.form
+    if is_key_present:
+        exercise_ids = request.form.getlist("selected")
+
+    for value in exercise_ids:
+        exercise_id=int(value)
+        Workout_exercise(exercise_id=exercise_id, workout_id=id)
+
+        db.session.commit()
+
+    workout_id = id
+    return redirect(f"/workout/{workout_id}")
 
 # delete workout
 @workout_blueprint.route("/workout/<id>/delete", methods=['POST'])
@@ -89,3 +111,17 @@ def delete_workout(id):
     db.session.delete(workout)
     db.session.commit()
     return redirect("/workout/all-workouts")
+
+# workout completed
+@workout_blueprint.route("/workout/<id>/workout-completed", methods=['POST'])
+def workout_completed(id):
+    workout = Workout.query.get(id)
+    workout.completed = True
+
+    if workout_completed:
+        user = User.query.all()
+        print("user info:", user)
+        points = user.points + 1
+        db.session.add(points)
+        db.session.commit()     
+    return redirect("/workout")
