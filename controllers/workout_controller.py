@@ -88,4 +88,4 @@ def delete_workout(id):
     workout = Workout.query.get(id)
     db.session.delete(workout)
     db.session.commit()
-    return "deleted"
+    return redirect("/workout/all-workouts")
