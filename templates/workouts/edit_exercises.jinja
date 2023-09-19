@@ -1,25 +1,26 @@
 {% extends 'base.jinja' %} {% block content %}
     
-<section class="container">
-    <h1 class="page-title">{{workout.name}}</h1>
+    <h2>Remove existing exercises</h2>
 
+    {# {{workout.exercises}} #}
 
     <ul>
-        <form action="/workout/{{workout.id}}/add-exercises" method="post">
-        {% for exercise in exercises %}
+        <form action="/workout-exercise/{{workout.id}}/delete" method="post">
+        {% for exercise in workout.exercises %}
             <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
                     <label for="selected"></label>
                     <input type="checkbox" id="selected" name="selected" value={{exercise.id}}>
             </li>
         {% endfor %}
         
-            <input class="submit-input" type="submit" value="Create workout">
+            <input class="delete" type="submit" value="Delete">
         </form>
     </ul>
 
-    <h3>Didn't see it?</h3>
+    
+    <h2>Add new exercises</h2>
 
-    <form class="form" action="/exercise/new" method="post">
+    <form action="/workout/{{workout.id}}/add-exercises" method="post">
         <label class="form" for="name">Name</label>
         <input class="dropdown" type="text" name="name" id="name">
 
@@ -31,9 +32,5 @@
     
         <input class="submit-input" type="submit" value="Add Exercise">
     </form>
-    
-</section>
 
 {% endblock content %}
-
-{# {{workouts.exercise}} #}

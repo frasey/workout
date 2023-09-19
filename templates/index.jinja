@@ -8,10 +8,10 @@
     <section class="container homepage__choose-workout">
         <h2 class="homepage__choose-title">Choose your workout</h2>
         <div>
-            <form class="homepage-dropdown" action="/workout" method="post"></form>
+            <form class="homepage-dropdown" action="/workout">
                 <select class="dropdown" name="workout" id="workout">
                     {% for workout in workouts %}
-                        <option value="workout.id">{{workout.name}}</option>
+                        <option value="{{workout.id}}">{{workout.name}}</option>
                     {% endfor %}
                 </select>
                 
@@ -25,7 +25,7 @@
                         {% endfor %}
                     </ul>
                 {% endif %} #}
-                <input class="submit-input" type="submit" value="Start Workout">
+                <button>I'm a button</button>
                 </div>
             
             </form>

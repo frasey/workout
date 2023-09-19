@@ -22,7 +22,7 @@
 .header-title {
     font-family: 'Press Start 2P', cursive;
     color: #fff;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
 }
 
 .nav-bar {
@@ -32,6 +32,7 @@
 }
 
 .nav-link {
+    font-weight: bold;
     color: #000;
 }
 
@@ -55,7 +56,7 @@
     font-family: 'Press Start 2P', cursive;
     font-size: 100px;
     color: #fff;
-    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+    text-shadow: 4px 0 0 #000, 0 -4px 0 #000, 0 4px 0 #000, -4px 0 0 #000;
     background-color: transparent;
     
 }
@@ -77,8 +78,7 @@
 }
 
 .homepage-dropdown {
-    display: flex;
-    flex-direction: column;
+    display: center;
 }
 
 /* DROPDOWNS, BUTTONS, LINKS */
@@ -87,6 +87,7 @@
     background-color: #FFE1CC;
     border-color: #695D54;
     border-radius: 5px;
+    width: max-content;
 }
 
 .submit-input {

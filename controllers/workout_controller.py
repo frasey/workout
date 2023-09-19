@@ -7,22 +7,28 @@ from models.user import User
 
 workout_blueprint = Blueprint("/workout", __name__)
 
-# Homepage - choose workout, mark completed
+# Homepage - choose workout
 @workout_blueprint.route("/workout")
 def all_workouts():
     workouts = Workout.query.all()
     args = request.args
-    workout_id = args.get("workout")
-    if workout_id:
-        exercises = Workout_exercise.filter_by(workout_id)
-        return render_template("index.jinja", workouts=workouts, exercises=exercises)
-    else:
-        return render_template("index.jinja", workouts=workouts)
+    workout = args.get("workout")
+    # workout_id = int(workout)
+    # print("workout_id", workout_id)
+    # print(type(workout_id))
+    # if workout_id:
+    #     exercises = Workout_exercise.query.filter_by(workout_id)
+    #     return render_template("index.jinja", workouts=workouts, exercises=exercises)
+    # else:
+    return render_template("index.jinja", workouts=workouts)
 
+# select workout from dropdown
 @workout_blueprint.route("/workout", methods=["POST"])
 def show_homepage_workout():
-
+    selected_workout = request.form["workout"]
+    print("this is a", selected_workout)
     workouts = Workout.query.all()
+
     return render_template("index.jinja", workouts=workouts)
 
 # show one workout
@@ -90,19 +96,17 @@ def edit_workout(id):
 # update workout including exercises
 @workout_blueprint.route("/workout/<int:id>/edit", methods=["POST"])
 def update_workout_in_db(id):    
+    name = request.form["name"]
+    type = request.form["type"]
 
-    is_key_present= "selected" in request.form
-    if is_key_present:
-        exercise_ids = request.form.getlist("selected")
+    workout = Workout.query.get(id)
 
-    for value in exercise_ids:
-        exercise_id=int(value)
-        Workout_exercise(exercise_id=exercise_id, workout_id=id)
+    workout.name = name
+    workout.type = type
+    
+    db.session.commit()
 
-        db.session.commit()
-
-    workout_id = id
-    return redirect(f"/workout/{workout_id}")
+    return redirect(f"/workout-exercise/{id}/edit")
 
 # delete workout
 @workout_blueprint.route("/workout/<id>/delete", methods=['POST'])
