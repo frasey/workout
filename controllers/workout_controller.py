@@ -20,7 +20,7 @@ def all_workouts():
         workout_to_show = Workout.query.get(workout)
         return render_template("index.jinja", workouts=workouts, workout=workout_to_show)
     else:
-        return render_template("index.jinja", workouts=workouts)
+        return render_template("index.jinja", workouts=workouts, workout=workout)
 
 # show one workout
 @workout_blueprint.route("/workout/<id>")
