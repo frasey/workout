@@ -1,0 +1,20 @@
+{% extends 'base.jinja' %} {% block content %}
+    
+    <h1 class="page-title">Rewards</h1>
+    <h3><i>bribes?</i></h3>
+
+    <ul>
+        {% for reward in rewards %}
+            <li>{{reward.name}}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a new reward</h2>
+    <form class="form" action="/rewards" method="post">
+        <label for="reward"></label>
+        <input class="dropdown" type="text" name="reward" id="reward">
+
+        <input class="submit-input" type="submit">
+    </form>
+
+{% endblock content %}
