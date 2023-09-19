@@ -19,14 +19,14 @@
         </div>
     </section>
 
-    {# <section>
-    <h2>{{workout.name}}</h2>
-    <ul>
-        {% for exercise in exercises %}
-            <li>{{ exercise.name }}</li>
-        {% endfor %}
-    </ul>
-    </section> #}
+    <section class="container">
+        <h2>{{workout.name}}</h2>
+        <ul>
+            {% for exercise in workout.exercises %}
+                <li>{{ exercise.name }} sets: {{ exercise.sets}} reps: {{exercise.reps}}</li>
+            {% endfor %}
+        </ul>
+    </section>
 
 {% endblock content %}
 

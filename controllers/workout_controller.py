@@ -8,35 +8,19 @@ from models.user import User
 workout_blueprint = Blueprint("/workout", __name__)
 
 # Homepage - choose workout
-@workout_blueprint.route("/workout")
+@workout_blueprint.route("/workout", methods=['GET'])
 def all_workouts():
     workouts = Workout.query.all()
     args = request.args
     workout = args.get("workout")
     
     print("workout: ",workout)
-    return render_template("index.jinja", workouts=workouts)
 
-    # workout_id = int(workout)
-    # workout_to_show = Workout.query.get(workout_id)
-    # print(workout_to_show)
-    # print("workout_id", workout_id)
-    # print(type(workout_id))
-    # if workout:
-    #     exercises = Workout_exercise.query.filter_by(workout_id=id)
-    # return render_template("index.jinja", workouts=workouts, exercises=exercises, workout=workout_to_show)
-    # else:
-    # return render_template("index.jinja", workouts=workouts)
-
-
-# select workout from dropdown
-# @workout_blueprint.route("/workout", methods=["POST"])
-# def show_homepage_workout():
-#     selected_workout = request.form["workout"]
-#     print("this is a", selected_workout)
-#     workouts = Workout.query.all()
-
-#     return render_template("index.jinja", workouts=workouts)
+    if workout:
+        workout_to_show = Workout.query.get(workout)
+        return render_template("index.jinja", workouts=workouts, workout=workout_to_show)
+    else:
+        return render_template("index.jinja", workouts=workouts)
 
 # show one workout
 @workout_blueprint.route("/workout/<id>")
@@ -100,7 +84,7 @@ def edit_workout(id):
     exercises = Exercise.query.all()
     return render_template('workouts/edit.jinja', workout=workout, exercises=exercises)
 
-# update workout including exercises
+# update workout
 @workout_blueprint.route("/workout/<int:id>/edit", methods=["POST"])
 def update_workout_in_db(id):    
     name = request.form["name"]
@@ -114,6 +98,15 @@ def update_workout_in_db(id):
     db.session.commit()
 
     return redirect(f"/workout-exercise/{id}/edit")
+
+# remove exercise from workout
+@workout_blueprint.route("/workout/<int:workout_id>/remove/<int:exercise_id>", methods=['POST'])
+def remove_exercise_from_workout(workout_id, exercise_id):
+    # FILTER BY WORKOUT ID, THEN EXERCISE
+    current_workout_exercise = Workout_exercise.query.filter(Workout_exercise.workout_id == workout_id, Workout_exercise.exercise_id == exercise_id).one()
+    db.session.delete(current_workout_exercise)
+    db.session.commit()
+    return redirect(f"/workout/{workout_id}")
 
 # delete workout
 @workout_blueprint.route("/workout/<id>/delete", methods=['POST'])
@@ -137,10 +130,4 @@ def workout_completed(id):
     #     db.session.commit()     
     return redirect("/workout")
 
-@workout_blueprint.route("/workout/<int:workout_id>/remove/<int:exercise_id>", methods=['POST'])
-def remove_exercise_from_workout(workout_id, exercise_id):
-    # FILTER BY WORKOUT ID, THEN EXERCISE
-    current_workout_exercise = Workout_exercise.query.filter(Workout_exercise.workout_id == workout_id, Workout_exercise.exercise_id == exercise_id).one()
-    db.session.delete(current_workout_exercise)
-    db.session.commit()
-    return redirect(f"/workout/{workout_id}")
+
