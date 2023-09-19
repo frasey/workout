@@ -6,10 +6,6 @@
         <div class="center">
         {{ workout.exercises }}
 
-        <form action="/workout/{{workout.id}}/workout-completed" method="post">
-            <label for="workout-completed"></label>
-            <input class="submit-input" type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
-        </form>
         </div>
     </section>
 {% endblock content %}

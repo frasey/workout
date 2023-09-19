@@ -1,0 +1,10 @@
+{% extends 'base.jinja' %} {% block content %}
+    
+    <h1>Delete rewards</h1>
+
+    {% for reward in rewards %}
+        {{reward.name}}
+        <input type="submit" value="Delete">
+    {% endfor %}
+
+{% endblock content %}

@@ -13,8 +13,6 @@ def all_workouts():
     workouts = Workout.query.all()
     args = request.args
     workout = args.get("workout")
-    
-    print("workout: ",workout)
 
     if workout:
         workout_to_show = Workout.query.get(workout)
@@ -121,7 +119,22 @@ def delete_workout(id):
 def workout_completed(id):
     workout = Workout.query.get(id)
     workout.completed = True
+    
+    if workout.completed:
+        users = User.query.all()
+        reward = 1
+        for user in users:
+            user_id=int(user.id)
+            print("user_id", user_id)
+            add_point = User(user_id=id, points=points + reward)
+        # user.points 
+        
+        # INCREMENT USER.POINTS BY REWARD VALUE
 
+
+    # for workout in workout:
+    #     workout.completed = True
+    # print(workout.completed)
     # if workout_completed:
     #     user = User.query.all()
     #     print("user info:", user)
@@ -131,3 +144,11 @@ def workout_completed(id):
     return redirect("/workout")
 
 
+# for value in exercise_ids:
+#         exercise_id=int(value)
+#         new_workout_exercise = Workout_exercise(exercise_id=exercise_id, workout_id=id)
+#         db.session.add(new_workout_exercise)
+#         db.session.commit()
+
+#     workout_id = id
+#     return redirect(f"/workout/{workout_id}")

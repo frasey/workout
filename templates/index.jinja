@@ -25,6 +25,12 @@
             {% for exercise in workout.exercises %}
                 <li>{{ exercise.name }} sets: {{ exercise.sets}} reps: {{exercise.reps}}</li>
             {% endfor %}
+        
+
+        <form action="/workout/{{workout.id}}/workout-completed" method="post">
+            <label for="workout-completed"></label>
+            <input class="submit-input" type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
+        </form>
         </ul>
     </section>
 

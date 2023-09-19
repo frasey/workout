@@ -7,7 +7,7 @@ rewards_blueprint = Blueprint("/rewards", __name__)
 @rewards_blueprint.route("/rewards")
 def show_rewards():
     rewards = Reward.query.all()
-    return render_template("rewards/add_show_rewards.jinja", rewards=rewards)
+    return render_template("rewards/add_show.jinja", rewards=rewards)
 
 @rewards_blueprint.route("/rewards", methods=['POST'])
 def add_reward():
@@ -17,3 +17,14 @@ def add_reward():
     db.session.commit()
 
     return redirect("/rewards")
+
+# @rewards_blueprint.route("/exercise/<id>/edit")
+# def edit_reward(id):
+#     exercise = Exercise.query.get(id)
+#     return render_template('exercises/edit.jinja', exercise=exercise)
+
+@rewards_blueprint.route("/rewards/delete")
+def delete_reward():
+    rewards = Reward.query.all()
+    
+    return render_template("rewards/edit_delete.jinja", rewards=rewards)
