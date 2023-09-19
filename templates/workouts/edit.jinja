@@ -10,7 +10,34 @@
         <input class="dropdown" type="text" name="type" id="type" value="{{workout.type}}">
 
         <input class="submit-input" type="submit" value="Edit">
-
     </form>
+
+    <h2>Remove existing exercises</h2>
+
+        <ul>
+        {% for exercise in workout.exercises %}
+        <form action="/workout/{{workout.id}}/remove/{{exercise.id}}" method="post">
+            <li>Name: {{exercise.name}} Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                    <label for="selected"></label>
+                    <input class="delete" type="submit" value="Delete">
+            </li>
+        </form>
+        {% endfor %}
+    </ul>
+
+    <h2>Add new exercises</h2>
+    <ul>
+        <form action="/workout/{{workout.id}}/add-exercises" method="post">
+        {% for exercise in exercises %}
+            <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
+                    <label for="selected"></label>
+                    <input type="checkbox" id="selected" name="selected" value={{exercise.id}}>
+            </li>
+        {% endfor %}
+        
+            <input class="submit-input" type="submit" value="Add exercise">
+        </form>
+    </ul>
+
 
 {% endblock content %}

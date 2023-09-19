@@ -7,7 +7,7 @@ class Workout(db.Model):
     name = db.Column(db.String(64))
     type = db.Column(db.String(64))
     completed = db.Column(db.Boolean, default=False)
-    exercises = db.relationship("Exercise", secondary="workout_exercise", backref="workouts")
+    exercises = db.relationship("Exercise", secondary="workout_exercise", backref="workouts", cascade="delete")
     # primary is model to access, secondary is what you're accessing it through
 
     def __repr__(self):

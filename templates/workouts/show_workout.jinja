@@ -1,11 +1,15 @@
 {% extends 'base.jinja' %} {% block content %}
     
-    {{ workout.name }}
-    <br>
-    {{ workout.exercises }}
+    <section class="container">
+        <h1 class="page-title">{{ workout.name }}</h1>
+        <br>
+        <div class="center">
+        {{ workout.exercises }}
 
-    <form action="/workout/{{workout.id}}/workout-completed" method="post">
-        <label for="workout-completed"></label>
-        <input type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
-    </form>
+        <form action="/workout/{{workout.id}}/workout-completed" method="post">
+            <label for="workout-completed"></label>
+            <input class="submit-input" type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
+        </form>
+        </div>
+    </section>
 {% endblock content %}
