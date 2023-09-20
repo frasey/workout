@@ -4,6 +4,8 @@ from models.workout import Workout
 from models.exercise import Exercise
 from models.workout_exercise import Workout_exercise
 from models.user import User
+from models.rewards import Reward
+import random
 
 workout_blueprint = Blueprint("/workout", __name__)
 
@@ -14,11 +16,19 @@ def all_workouts():
     args = request.args
     workout = args.get("workout")
 
+    # output random reward
+    # User.query.all()
+    # user = User.query.filter(User.id >= 0).one()
+    # rewards = Reward.query.all()
+    # reward = None
+    # if user.points % 5 == 0:
+    #     reward = random.choice(rewards)
+    # show workout selected from dropdown
     if workout:
         workout_to_show = Workout.query.get(workout)
-        return render_template("index.jinja", workouts=workouts, workout=workout_to_show)
+        return render_template("index.jinja", workouts=workouts, workout=workout_to_show) #reward=None
     else:
-        return render_template("index.jinja", workouts=workouts, workout=workout)
+        return render_template("index.jinja", workouts=workouts, workout=workout) #reward=reward
 
 # show one workout
 @workout_blueprint.route("/workout/<id>")
@@ -119,14 +129,26 @@ def delete_workout(id):
 def workout_completed(id):
     workout = Workout.query.get(id)
     workout.completed = True
-
     reward_value = 1
+    User.query.all()
+    user = User.query.filter(User.id >= 0).one()
+    # rewards = Reward.query.all()
+    # reward = None
 
     if workout.completed:
-        User.query.all()
-        user = User.query.filter(User.id >= 0).one()
-        print("returned user", user)
         user.points += reward_value
         db.session.commit()
-    
-    return redirect("/workout")
+        return redirect("/workout")
+    elif user.points % 5 == 0:
+        print("user points are:", user.points)
+        return redirect("/workout/reward")
+    else:
+        return redirect("/workout")
+
+@workout_blueprint.route("/workout/reward")
+def output_reward():
+    # User.query.all()
+    # user = User.query.filter(User.id >= 0).one()
+    rewards = Reward.query.all()
+    reward = random.choice(rewards)
+    return render_template("/rewards/output_reward.jinja", reward=reward)
