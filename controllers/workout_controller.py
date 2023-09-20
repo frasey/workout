@@ -67,7 +67,7 @@ def add_workout_to_db(id):
             db.session.commit()
 
     workout_id = id
-    return redirect(f"/workout/{workout_id}/edit        ")
+    return redirect(f"/workout/{workout_id}")
 
 # show all workouts
 @workout_blueprint.route("/workout/all-workouts")

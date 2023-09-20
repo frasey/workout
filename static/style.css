@@ -81,6 +81,13 @@
     display: center;
 }
 
+.homepage__workout {
+    text-align: center;
+    list-style-type: none;
+}
+
+
+
 /* DROPDOWNS, BUTTONS, LINKS */
 
 .dropdown {

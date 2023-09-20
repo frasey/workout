@@ -7,7 +7,7 @@
 
     <section class="container homepage__choose-workout">
         <h2 class="homepage__choose-title">Choose your workout</h2>
-        <div>
+        <div class="hompage__menu">
             <form class="homepage-dropdown" action="/workout">
                 <select class="dropdown" name="workout" id="workout">
                     {% for workout in workouts %}
@@ -19,9 +19,9 @@
         </div>
     </section>
 
-    <section class="container">
-        <h2>{{workout.name}}</h2>
-        <ul>
+    <section class="container homepage__shown-workout">
+        <h2 class="page-title">{{workout.name}}</h2>
+        <ul class="homepage__workout">
             {% for exercise in workout.exercises %}
                 <li>{{ exercise.name }} sets: {{ exercise.sets}} reps: {{exercise.reps}}</li>
             {% endfor %}
@@ -32,12 +32,7 @@
             <input class="submit-input" type="submit" name="workout-completed" id="workout-completed" value="Workout Completed">
         </form>
         </ul>
-        {% endif %}
-
-        {# {% if reward.name %}
-            <p>You can have a {{ reward.name }}</p>
-        {% endif %} #}
-        
+        {% endif %}        
     </section>
 
 {% endblock content %}
