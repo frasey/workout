@@ -41,7 +41,6 @@ def add_workout():
     new_workout = Workout(name=name, type=type)
     db.session.add(new_workout)
     db.session.commit()
-    print(new_workout)
     return redirect(f"/workout/{new_workout.id}/add-exercises")
 
 # add exercises to workout.id
