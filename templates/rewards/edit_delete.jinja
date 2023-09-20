@@ -2,9 +2,13 @@
     
     <h1>Delete rewards</h1>
 
-    {% for reward in rewards %}
-        {{reward.name}}
-        <input type="submit" value="Delete">
-    {% endfor %}
+    <div>
+        {% for reward in rewards %}
+            {{reward.name}}
+            <form action="/rewards/delete/{{reward.id}}" method="post">
+                <input class="delete" type="submit" value="Delete">
+            </form>
+        {% endfor %}
+    </div>
 
 {% endblock content %}
