@@ -2,7 +2,7 @@
     
     <h1 class="page-title">Edit workout</h1>
 
-    <form class="form edit-form" action="/workout/{{ workout.id}}/edit" method="post">
+    <form class="form edit-form" action="/workout/{{ workout.id }}/edit" method="post">
         <label class="form" for="name">Name</label>
         <input class="dropdown" type="text" name="name" id="name" value="{{workout.name}}">
     
@@ -16,7 +16,7 @@
 
         <ul>
         {% for exercise in workout.exercises %}
-        <form action="/workout/{{workout.id}}/remove/{{exercise.id}}" method="post">
+        <form action="/workout/{{ workout.id }}/remove/{{ exercise.id }}" method="post">
             <li>Name: {{exercise.name}} Sets: {{exercise.sets}} Reps: {{exercise.reps}}
                     <label for="selected"></label>
                     <input class="delete" type="submit" value="Delete">
@@ -27,7 +27,7 @@
 
     <h2>Add new exercises</h2>
     <ul>
-        <form action="/workout/{{workout.id}}/add-exercises" method="post">
+        <form action="/workout/{{ workout.id }}/add-exercises" method="post">
         {% for exercise in exercises %}
             <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
                     <label for="selected"></label>

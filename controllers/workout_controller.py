@@ -15,15 +15,6 @@ def all_workouts():
     workouts = Workout.query.all()
     args = request.args
     workout = args.get("workout")
-
-    # output random reward
-    # User.query.all()
-    # user = User.query.filter(User.id >= 0).one()
-    # rewards = Reward.query.all()
-    # reward = None
-    # if user.points % 5 == 0:
-    #     reward = random.choice(rewards)
-    # show workout selected from dropdown
     if workout:
         workout_to_show = Workout.query.get(workout)
         return render_template("index.jinja", workouts=workouts, workout=workout_to_show) #reward=None
@@ -50,10 +41,8 @@ def add_workout():
     new_workout = Workout(name=name, type=type)
     db.session.add(new_workout)
     db.session.commit()
-    
-    workouts = Workout.query.all()
-    workout_id = len(workouts)
-    return redirect(f"/workout/{workout_id}/add-exercises")
+    print(new_workout)
+    return redirect(f"/workout/{new_workout.id}/add-exercises")
 
 # add exercises to workout.id
 @workout_blueprint.route("/workout/<id>/add-exercises")
@@ -72,12 +61,13 @@ def add_workout_to_db(id):
 
     for value in exercise_ids:
         exercise_id=int(value)
-        new_workout_exercise = Workout_exercise(exercise_id=exercise_id, workout_id=id)
-        db.session.add(new_workout_exercise)
-        db.session.commit()
+        if Workout_exercise.query.filter(Workout_exercise.exercise_id == value, Workout_exercise.workout_id == id).count() == 0:
+            new_workout_exercise = Workout_exercise(exercise_id=exercise_id, workout_id=id)
+            db.session.add(new_workout_exercise)
+            db.session.commit()
 
     workout_id = id
-    return redirect(f"/workout/{workout_id}")
+    return redirect(f"/workout/{workout_id}/edit        ")
 
 # show all workouts
 @workout_blueprint.route("/workout/all-workouts")
@@ -114,11 +104,12 @@ def remove_exercise_from_workout(workout_id, exercise_id):
     current_workout_exercise = Workout_exercise.query.filter(Workout_exercise.workout_id == workout_id, Workout_exercise.exercise_id == exercise_id).one()
     db.session.delete(current_workout_exercise)
     db.session.commit()
-    return redirect(f"/workout/{workout_id}")
+    return redirect(f"/workout/{workout_id}/edit")
 
 # delete workout
 @workout_blueprint.route("/workout/<id>/delete", methods=['POST'])
 def delete_workout(id):
+    Workout_exercise.query.filter(Workout_exercise.workout_id == id).delete()
     workout = Workout.query.get(id)
     db.session.delete(workout)
     db.session.commit()
@@ -132,23 +123,20 @@ def workout_completed(id):
     reward_value = 1
     User.query.all()
     user = User.query.filter(User.id >= 0).one()
-    # rewards = Reward.query.all()
-    # reward = None
 
     if workout.completed:
         user.points += reward_value
         db.session.commit()
-        return redirect("/workout")
-    elif user.points % 5 == 0:
-        print("user points are:", user.points)
-        return redirect("/workout/reward")
-    else:
-        return redirect("/workout")
+    return redirect("/workout/reward")
 
 @workout_blueprint.route("/workout/reward")
 def output_reward():
-    # User.query.all()
-    # user = User.query.filter(User.id >= 0).one()
     rewards = Reward.query.all()
     reward = random.choice(rewards)
-    return render_template("/rewards/output_reward.jinja", reward=reward)
+    User.query.all()
+    user = User.query.filter(User.id >= 0).one()
+    
+    if user.points %5 ==0:
+        return render_template("rewards/output_reward.jinja", reward=reward)
+    else:
+        return render_template("rewards/no_reward.jinja", user=user)
