@@ -1,9 +1,10 @@
 {% extends 'base.jinja' %} {% block content %}
     
+    <section class="container">
     <h1 class="page-title">Rewards</h1>
     <h3><i>bribes?</i></h3>
 
-    <ul>
+    <ul class="list">
         {% for reward in rewards %}
             <li>{{reward.name}}</li>
         {% endfor %}
@@ -16,6 +17,9 @@
 
         <input class="submit-input" type="submit">
     </form>
+    <br>
+    <a class="home-button rewards-button" href="/rewards/delete">Delete rewards</a>
+    
+    </section>
 
-    <button><a href="/rewards/delete">Delete rewards</button>
 {% endblock content %}

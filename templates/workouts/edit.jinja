@@ -2,6 +2,7 @@
     
     <h1 class="page-title">Edit workout</h1>
 
+    <section class="container">
     <form class="form edit-form" action="/workout/{{ workout.id }}/edit" method="post">
         <label class="form" for="name">Name</label>
         <input class="dropdown" type="text" name="name" id="name" value="{{workout.name}}">
@@ -14,7 +15,7 @@
 
     <h2>Remove existing exercises</h2>
 
-        <ul>
+        <ul class="list">
         {% for exercise in workout.exercises %}
         <form action="/workout/{{ workout.id }}/remove/{{ exercise.id }}" method="post">
             <li>Name: {{exercise.name}} Sets: {{exercise.sets}} Reps: {{exercise.reps}}
@@ -26,7 +27,7 @@
     </ul>
 
     <h2>Add new exercises</h2>
-    <ul>
+    <ul class="list">
         <form action="/workout/{{ workout.id }}/add-exercises" method="post">
         {% for exercise in exercises %}
             <li>Name: {{exercise.name}}  Sets: {{exercise.sets}}  Reps: {{exercise.reps}}
@@ -39,6 +40,6 @@
         </form>
     </ul>
 
-    <a href="/workout">Done</a>
+    </section>
 
 {% endblock content %}

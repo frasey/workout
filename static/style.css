@@ -97,6 +97,24 @@
     width: max-content;
 }
 
+.center-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form {
+    text-align: center;
+    background-color: #FDB249;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .submit-input {
     margin: 15px 0;
     padding: 5px;
@@ -112,6 +130,7 @@
     background-color: #C9598A;
     border-color: #695D54;
     border-radius: 5px;
+    color: #000;
 }
 
 .button {
@@ -123,23 +142,17 @@
     border-width: 5px;
 }
 
-.center-form {
-    display: flex;
-    justify-content: center;
-}
-
-.form {
+.home-button {
+    color: #000;
+    background-color: #BF88BA;
+    padding: 5px;
+    border-radius: 5px;
     text-align: center;
-    background-color: #FDB249;
-    border-radius: 10px;
-    padding: 0 10px;
 }
 
-.page-title {
-    text-align: center;
-    margin-bottom: 10px;
+.list {
+    list-style-type: none;
 }
-
 /* SHOW/ADD EXERCISES */
 .exercises__title {
     text-decoration: underline;
@@ -157,4 +170,8 @@
 
 .workout-list {
     margin: 10px 0 0 20px;
+}
+
+.rewards-button {
+    margin-top: 200px;
 }

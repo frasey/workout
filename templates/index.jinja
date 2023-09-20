@@ -21,6 +21,7 @@
 
     <section class="container homepage__shown-workout">
         <h2 class="page-title">{{workout.name}}</h2>
+        <h4 class="homepage__workout"><i>{{ workout.type }}</i></h4>
         <ul class="homepage__workout">
             {% for exercise in workout.exercises %}
                 <li>{{ exercise.name }} sets: {{ exercise.sets}} reps: {{exercise.reps}}</li>

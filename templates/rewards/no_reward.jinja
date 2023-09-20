@@ -1,6 +1,9 @@
 {% extends 'base.jinja' %} {% block content %}
 
-    <h2>You have {{user.points}} points</h2>
+    <div class="container center-form">
+        <h2 class="page-title">You have {{user.points}} points</h2>
 
-    <a class="nav-link" href="/workout">Home</a>
+        <a class="home-button" href="/workout">Home</a>
+    </div>
+
 {% endblock content %}
