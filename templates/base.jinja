@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/707e36b538.js" crossorigin="anonymous"></script>
+
+    {# can consider adding another block here if you want to add css for only certain templates it would look like this, i've added the other part of the example into output_reward.jinja #}
+    {%block head%}
+    {%endblock%}
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
