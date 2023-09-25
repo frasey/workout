@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect
 from app import db
 from models.rewards import Reward
-
+# should probs call this file rewards_controller to keep consistant naming
 rewards_blueprint = Blueprint("/rewards", __name__)
 
 @rewards_blueprint.route("/rewards")
