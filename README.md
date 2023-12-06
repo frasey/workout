@@ -8,7 +8,6 @@ A user can also input their own list of rewards. Completing a workout generates 
 Dependencies:
 
 Python 3,
-
 PostgreSQL
 
 
