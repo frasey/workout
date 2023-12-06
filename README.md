@@ -6,10 +6,10 @@ I created an app in which a user can add their own exercises, and add these exer
 A user can also input their own list of rewards. Completing a workout generates 1 point, and for every 5 points the user is given a random reward from their selection.
 
 Dependencies:
-
+```
 Python 3,
 PostgreSQL
-
+```
 
 Start guide:
 ```
