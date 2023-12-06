@@ -1,6 +1,7 @@
 # workout
 Solo python project
 Using Python, Flask and SQLAlchemy to create a working CRUD app using restful routes. This app is intended to help with executive dysfunction, a trait of ADHD, by giving a reward to help with motivation.
+
 I created an app in which a user can add their own exercises, and add these exercises together to create their own workouts. 
 A user can also input their own list of rewards. Completing a workout generates 1 point, and for every 5 points the user is given a random reward from their selection.
 
