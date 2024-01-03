@@ -25,12 +25,11 @@ This was my second solo Python project. I really pleased by how much more easily
 | Add exercise | Edit exercise | All exercises |
 | <img width="340" alt="Add a workout" src="https://github.com/frasey/workout/assets/129194569/a8406674-3a0a-47d7-8601-604ead5eaa70"> | <img width="340" alt="Add exercises to workout" src="https://github.com/frasey/workout/assets/129194569/d86bf5e0-d1cf-4f50-812b-590c6a1f01fd"> | <img width="340" alt="Add exercises to workout 2" src="https://github.com/frasey/workout/assets/129194569/34ccdf34-6e3b-459c-938e-bb9888122a90"> |
 | Add a workout | Add exercises to workout (1/2)| Add exercises to workout (2/2) |
-| <img width="340" alt="New workout" src="https://github.com/frasey/workout/assets/129194569/62c563d3-fdc9-457a-90ea-6459cc3054e0"> |  <img width="340" alt="Edit a workout" src="https://github.com/frasey/workout/assets/129194569/f40314af-3bb8-4776-9a52-03ea31085680">
-| <img width="340" alt="Edit workout" src="https://github.com/frasey/workout/assets/129194569/e86c3a25-5792-486f-88f5-872bf09bfda0"> | 
+| <img width="340" alt="New workout" src="https://github.com/frasey/workout/assets/129194569/62c563d3-fdc9-457a-90ea-6459cc3054e0"> | <img width="340" alt="Edit a workout" src="https://github.com/frasey/workout/assets/129194569/f40314af-3bb8-4776-9a52-03ea31085680"> | <img width="340" alt="Edit workout" src="https://github.com/frasey/workout/assets/129194569/e86c3a25-5792-486f-88f5-872bf09bfda0"> | 
 | Show new workout | Edit/delete workout| Edit workout (1/2) |
 | <img width="340" alt="Edit workout 2" src="https://github.com/frasey/workout/assets/129194569/1fffe343-412d-49be-a296-d99ad0eaa52d"> | <img width="340" alt="workout points" src="https://github.com/frasey/workout/assets/129194569/86ea28d7-9e8a-4390-8fca-2870ac49d6fa"> | <img width="340" alt="rewards" src="https://github.com/frasey/workout/assets/129194569/ef044c7d-32a6-4446-af07-b09848a0f6fb"> |
 | Edit workout (2/2) | Workout points | Rewards |
-| <img width="340" alt="delete rewards" src="https://github.com/frasey/workout/assets/129194569/b69236d0-4028-4c0e-bc2e-fb6e341b3662"> |<img width="340" alt="workout reward" src="https://github.com/frasey/workout/assets/129194569/b76d2371-3f44-4cb7-8f02-e559bf6ddbfa"> |  |
+| <img width="340" alt="delete rewards" src="https://github.com/frasey/workout/assets/129194569/b69236d0-4028-4c0e-bc2e-fb6e341b3662"> | <img width="340" alt="workout reward" src="https://github.com/frasey/workout/assets/129194569/b76d2371-3f44-4cb7-8f02-e559bf6ddbfa"> |  |
 | Delete reward | Workout reward |  |
 
 
